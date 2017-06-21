@@ -3,11 +3,12 @@ Create new branch - git branch <branchName>
 Steps to modifying the DevBranch and then merging changes to Origina Master
 1. git checkout <branchName>
 2. Make changes to files
-3. git commit -m "message here"
-4. git checkout Master
-5. git merge <branchname from step 1>
-6. git branch -d <branchname from step 1> to delete branch when you don't need it anymore
-7. git push origin master
+3. git add <filename> 
+4. git commit -m "message here"
+5. git checkout Master
+6. git merge <branchname from step 1>
+7. git branch -d <branchname from step 1> to delete branch when you don't need it anymore
+8. git push origin master
 
 
 Steps to create a branch
