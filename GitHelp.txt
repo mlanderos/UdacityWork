@@ -1,0 +1,19 @@
+Create new branch - git branch <branchName>
+
+Steps to modifying the DevBranch and then merging changes to Origina Master
+1. git checkout <branchName>
+2. Make changes to files
+3. git commit -m "message here"
+4. git checkout Master
+5. git merge <branchname from step 1>
+6. git branch -d <branchname from step 1> to delete branch when you don't need it anymore
+7. git push origin master
+
+
+Steps to create a branch
+1. git checkout master
+2. git status
+3. (If there are changes in master,pull them down) git pull
+4. git branch <new Branch name> ##to create a new branch from Master
+5. git checkout <new Branch name>
+6. Make changes to your branch and then follow steps above to merge those changes to Master
