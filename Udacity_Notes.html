@@ -11,20 +11,19 @@
 
 <head>
     <!-- The <title> element is used to set the title of the browser tab -->
+    <link rel="stylesheet" href="style.css">
     <title>Udactiy Notes</title>
 </head>
 
 <body>
     <!-- The <h1> element represents the section heading -->
     <h1>
-        <u>Lesson One</u>
+        <u>Lesson One</u> <!-- Start of Lesson1 -->
     </h1>
     <!-- The <body> tag contains all of the contents of an HTNML document, such as text, hyperlinks,
     images, tables, lists, etc.-->
     <div>
-        <p>
-            <b><span style="color:blue">Components of the web</span></b>
-        </p>
+            <p class="heading">Components of the web</p>
         <div>
             <ul>
                 <li><em>HTTP</em> - the main protocol of the web</li>
@@ -32,16 +31,12 @@
                 <li><em>Internet</em> - the world's largest computer network</li>
                 <li><em>Browser</em> - a program that runs on your computer to display files found on the web</li>
             </ul>
-            <p>
-                <b><span style="color:blue">HTML Attributes</span></b>
-            </p>
+                <p class="heading">HTML Attributes</p>
             <ul>
                 <li>Create a hyperlink = &lt;a href=&quot;url&quot;&gt;link&lt;/a&gt;</li>
                 <li>Display an image = &lt;img src=&quot;url&quot; alt=&quot;text&quot;&gt;</li>
             </ul>
-            <p>
-                <b><span style="color:blue">More HTML Elements</span></b>
-            </p>
+                <p class="heading">More HTML Elements</p>
             <ul>
                 <li>&lt;p&gt; element - defines a paragraph</li>
                 <li>&lt;br&gt; element - creates a line break</li>
@@ -49,10 +44,8 @@
                 <li>&lt;span&gt; element - creates an "inline" container element</li>
             </ul>
         </div>
-
-        <!-- start of Lesson 2 -->
         <h1>
-            <u>Lesson Two</u>
+            <u>Lesson Two</u> <!-- start of Lesson 2 -->
         </h1>
         <div>
             <ul>
@@ -61,9 +54,7 @@
                 <li>CSS controls the style of the page</li>
                 <li>DOM - Document Object Language which is the tree-like structure of the page.</li>
             </ul>
-            <p>
-                <b><span style="color:blue">HTML CSS DOM</span></b>
-            </p>
+                <p class="heading">HTML CSS DOM</p>
             <ul>
                 <li>HTML - HyperText Markup Language - the standard markup language used to create webpages</li>
                 <li>CSS - Cascading sytle sheets - style sheet language used to describing the look and formatting of a document
@@ -74,10 +65,11 @@
             </ul>
         </div>
         <h1>
-            <u>Lesson 4</u>
+            <!-- I do not recall why I didn't write anything down for Lesson 3 -->
+            <u>Lesson 4</u> <!-- Start of Lesson 4 -->
         </h1>
         <div>
-                <p>How does CSS "control" HTML?</p>
+                <p class="heading">How does CSS "control" HTML?</p>
                 <p>If you want to write CSS that makes all h1 elements have a background and white text you would write:
                     <br>
                     h1 {<br>
@@ -88,12 +80,28 @@
                     After the the h1 there is a left curly brace "{" and at the bottom there is a matching right curly brace "}". Everything between these curly braces will be interpreted as a "rule" that should be applied to every h1 element.<br>
                     The line of code that says "background-color : black;" is a declaration. "background-color" is a property and "black" is the value of that property.
                 </p>
-                <p>How do I include CSS Styling in my webpage?</p>
+                <p class="heading">How do I include CSS Styling in my webpage?</p>
                 <ul>
                     <li>Method 1: Write CSS in the head tag of your HTML</li>
                     <li>Method 2: Link your HTML to a separate CSS file (Better method when working on large projects)</li>
                     <li>Method 3: Write your style <em>inline</em> with your HTML</li>
                 </ul>
+                <p class="heading">Four pointes to box-sizing</p>
+                <ol>
+                    <li>HTML elements are boxes and each box has 4 components.</li>
+                    <li>Because there are so many components to each box, it can often be hard to get the size of a box just right.</li>
+                    <li>There are two techniques you can use to help deal with sizing issues:</li>
+                        <ol>
+                            <li>Set sizes in terms of percentages rather than pixels.</li>
+                            <li>Set the <span style=color:red>box-sizing</span> attribute to <span style=color:red>border-box</span> for every element</li>
+                        </ol>
+                    <li>Different browsers work slightly differently. Sometimes this causes different browsers to display the same code differently.</li>
+                </ol>
+                <p class="heading">Box Positioning</p>
+                <ol>
+                    <li>Divs are <b>block</b> elements (as opposed to <b>inline</b>), so by default they take up the entire width of a page.</li>
+                    <li> Adding the rule <span style=color:red>display: flex;</span> to the appropriate CSS will override this behavior and let divs appear next to each other.</li>
+                </ol>
         </div>
     </div>
 </body>
