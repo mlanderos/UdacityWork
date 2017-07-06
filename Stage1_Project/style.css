@@ -1,1 +1,114 @@
+/* This is a CSS comment. Notice that CSS comments are
+enclosed by different characters than HTML comments. */
 
+/* CSS allows you to give your page style (colors, shapes, fonts, etc.)
+You can apply CSS elements to entire HTML classes. Review Lesson 1.3
+if you need a refresher about how to do this. */
+
+/* learn this from Udactiy */
+/*
+ *{
+   outline: 1px solid red !important;
+}
+*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+} 
+
+h1 {
+    background-color: green
+}
+
+/* From W3Schools */
+/* Begin image overlap on splash image */
+.LoZ {
+    position: relative;
+}
+
+/* maintains absolute position of overlapping triforce image */
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 10px;
+}
+
+/* maintains the size of the splash and overlapping image */
+img { 
+    width: 100%;
+    height: auto;
+}
+
+/* controls the width and height specifically for the overlapping image */
+.topright {
+    width: 5%;
+    height: 5%;
+}
+/* end overlapping image */
+
+/* The container with the 3 small images and captions */
+/* Used to make each div element within container to sit next to each other */
+.images {
+    display: flex;
+}
+
+/* gap used between splash image and 3 smaller images */
+.horizontalgap {
+    height: 10px;
+}
+
+/* Size of the 3 caption images */
+.captionimages {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    max-width: 400px;
+}
+
+/* Gap @ beginning/ending and between 3 caption images */
+.verticalgap {
+    width: 2%;
+}
+
+/* gap below captions */
+/* Made sure that their is spacing between captions and video even when making your browswer window very small */
+.gapbelowcaptions {
+    height: 40px;
+}
+
+/* div class container for video and video description */
+.embededvideo {
+    display: flex;
+}
+
+/* video width/height */
+.video {
+    width: 1000px; 
+    height: 315px;
+    min-width: 400px;
+}
+
+/* verticalgap @beginning/end and between video and video description */
+.sideverticalgap {
+    width: 2%;
+}
+
+/* This aligns all of the text underneathe the 3 caption photos*/
+.captionbody {
+    text-align: center;
+}
+
+/* size of video description */
+/* Not sure if there is a better way to control how the text flows if the browser screen is sized smaller (or to its smallest) 
+   I would think it would be best to push the text to underneath the image, but not sure how to do that. :) */
+.videodescription {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-family: 'Gill Sans';
+    line-height: 1.7;
+}
