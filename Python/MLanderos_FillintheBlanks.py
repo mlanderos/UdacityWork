@@ -19,7 +19,7 @@ def mode(paragraph,n):
                 paragraph = paragraph.replace('__'+ str(question) + '__', selection)
                 print "Correct!"
                 question += 1
-                max_tries = n #resetting number back for next question
+                max_tries = n #resetting number back for next question!
             else:
                 max_tries -= 1
                 print 'wrong answer! Try again. You have ' + str(max_tries) + ' left.'
