@@ -18,3 +18,11 @@ Steps to create a branch
 4. git branch <new Branch name> ##to create a new branch from Master
 5. git checkout <new Branch name>
 6. Make changes to your branch and then follow steps above to merge those changes to Master
+
+If working on Master branch and making changes to Master branch
+1. git status (ensure you are on master branch)
+2. make changes to file
+3. git add <filename>
+4. git commit -m "<add commit changes>"
+5. git push (this will push your local commits to master branch)
+6. git status (should show that the master brach is up-to-date.)
