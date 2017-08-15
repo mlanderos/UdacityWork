@@ -63,7 +63,6 @@ def play_game(game_level, chances):
     print "You WON YAY!!!"
     quit()
 
-
 def guesses():
     """function for user to input a integer for how mnay guesses he/she has to play each question. Returns int"""
     try:
