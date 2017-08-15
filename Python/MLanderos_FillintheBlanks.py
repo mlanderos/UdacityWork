@@ -1,62 +1,98 @@
 
-def correct_answer(level, user_input, question):
-    """<>"""
-    if level == 'easy':
-        answerlist = ['python', '.py', 'yes', 'no']
-    if level == 'medium':
-        answer_list = ['hi','hi']
-    if question == 1 and user_input == answerlist[question - 1]:
-        return True
-    if question == 2 and user_input == answerlist[question - 1]:
-        return True
-    if question == 3 and user_input == answerlist[question - 1]:
-        return True
-    if question == 4 and user_input == answerlist[question - 1]:
-        return True
-    return False
+def get_answerfor(mode):
+    """function to return answer key for selected mode. easy, medium, hard are the only acceptable values. Returns list"""
+    if mode == 'easy':
+        answer_key = ['python', 'guido', '.py', 'print']
+    elif mode == 'medium':
+        answer_key = ['variable', 'assign', 'operand', 'operator']
+    else: #mode hard
+        answer_key = ['operators', 'arith', 'assign', 'ical']
+    return answer_key
 
-def mode(level, n):
-    """function to test each blank space from any mode"""
-    [level]_paragraph = "__1__ programs can be written using any text editor and should have the extention __2__. Write Yes for __3__ and No for __4__."
-    max_tries = n #expecting 5
+def verify_answer(mode, u_answer, question_num):
+    """function to verify answer for any mode and any question. Returns bool value"""
+    answers = get_answerfor(mode)
+    if u_answer == answers[question_num - 1]:
+        return True
+    else:
+        return False
+
+def get_paragraphfor(mode):
+    """function to return paragraph for selected mode: easy, medium, hard are the only acceptable values. Returns string"""
+    if mode == 'easy':
+        paragraph = """
+At Udactiy we are learning how to program in __1__. The __1__ language was created by __2__ van Rossum during 1985-1990. __1__ files
+ have the extention __3__. If you want to print something from Python use the __4__ command."""
+    if mode == 'medium':
+        paragraph = """
+Python __1__s do not need explicit declaration to reserve memory space. The declaration happens automatically when you __2__ 
+a value to a variable. The equal sign (=) is used to __2__ values to __1__s. The __3__ to the left of the = __4__ is the 
+name of the variable and the __3__ to the right of the = __4__ is the value stored in the variable. """
+    if mode == 'hard':
+        paragraph = """
+__1__ are the constructs which can manipulate the value of operands. Python language supports the following types of __1__:
+__2__metric __1__, Comparison __1__, __3__ment __1__, Log__4__ __1__, Bitwise __1__, Membership __1__ & Identity __1__."""
+    return paragraph
+
+def play_game(game_level, chances):
+    """logic for looping through all questions and ending game if max attempts are met. Prints string output for user"""
+    paragraph = get_paragraphfor(game_level)
+    max_tries = chances
     question = 1
-    while question < 5: #expecting only 4 questions max
+    while question < 5: #expecting only 4 questions max per mode
+        print "The curent paragraph reads as such:"
         print paragraph
-        selection = raw_input('What is the answer to question ' + str(question) +': ').lower()
-        if max_tries > 1: #expecting 5 max tries
-            if correct_answer(level, selection, question):
-                paragraph = paragraph.replace('__'+ str(question) + '__', selection)
+        user_answer = raw_input('What is the answer to question ' + str(question) +': ').lower()
+        if max_tries > 1:
+            if verify_answer(game_level, user_answer, question):
+                paragraph = paragraph.replace('__'+ str(question) + '__', user_answer)
                 print "Correct!"
-                print ""
+                print "" #intentional blank space
                 question += 1
-                max_tries = n #resetting retries back to n for next question!
+                max_tries = chances #resetting retries back to chances variable for next question!
             else:
                 max_tries -= 1
-                print 'wrong answer! Try again. You have ' + str(max_tries) + ' left.'
+                if max_tries > 1:
+                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' trys left.'
+                else:
+                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' Make it count!'
         else:
-            print "You Loss!! Game Over!!"
+            print "You failed too many straight guesses. GAME OVER!"
+            print "" #intentonal blank space
             quit()
+    print paragraph
     print "You WON YAY!!!"
     quit()
 
-def chosen(mode, guesses):
-    print "You have chosen " + mode `n
-    print "You will get " + str(guesses) + " guesses per problem"
-    print ""
-    print "Your current paragraph reads as such:"
+
+def guesses():
+    """function for user to input a integer for how mnay guesses he/she has to play each question. Returns int"""
+    try:
+        tries = input('Type a number that is lower than 100 for how many guesses you receive for each problem: ')
+    except:
+        print "Your input does not appear to an integer. Please try again"
+        guesses()
+    else:
+        if type(tries) is int:
+            if tries > 100:
+                print "Sorry number is not lower than 100. Pick new number"
+                guesses()
+            else:
+                print "You will get " + str(tries) + " guesses per problem."
+                print "" #intended blank space
+                return tries
 
 def game_start():
-    modes = ['easy', 'medium', 'hard']
+    """function for game to begin and allows user to select level and # of quesses"""
     print "Please select a game difficulty by typing it in"
-    user_modeselect = raw_input('Possible choices include easy, medium & hard: ').lower()
-    user_guessSelect = raw_input('Choose a number which will be how many quesses you will get per question: ')
-    while user_modeselect in modes:
-        if user_modeselect == 'easy':
-            chosen(user_modeselect, user_guessSelect)
-            mode('easy', user_guessSelect)
+    user_mode = raw_input('Possible choices include easy, medium & hard: ').lower()
+    modes = ['easy', 'medium', 'hard']
+    if user_mode in modes:
+        print "You chose game mode: " + user_mode
+        user_guess = guesses()
+        play_game(user_mode, user_guess)
     else:
         print "Incorrect. Please check your spelling and try again."
         game_start()
-        
-        
+
 game_start()
