@@ -36,28 +36,28 @@ __2__metric __1__, Comparison __1__, __3__ment __1__, Log__4__ __1__, Bitwise __
 def play_game(game_level, chances):
     """logic for looping through all questions and ending game if max attempts are met. Prints string output for user"""
     paragraph = get_paragraphfor(game_level)
-    max_tries = chances
+    question_overflow = 5 #expecting only 4 questions max per mode
     question = 1
-    while question < 5: #expecting only 4 questions max per mode
-        print "The curent paragraph reads as such:"
+    max_tries = chances
+    min_tries = 1
+    while question < question_overflow:
+        print "The current paragraph reads as such:"
         print paragraph
         user_answer = raw_input('What is the answer to question ' + str(question) +': ').lower()
-        if max_tries > 1:
+        if max_tries > min_tries:
             if verify_answer(game_level, user_answer, question):
                 paragraph = paragraph.replace('__'+ str(question) + '__', user_answer)
-                print "Correct!"
-                print "" #intentional blank space
+                print "Correct!\n"
                 question += 1
                 max_tries = chances #resetting retries back to chances variable for next question!
             else:
                 max_tries -= 1
-                if max_tries > 1:
+                if max_tries > min_tries:
                     print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' trys left.'
                 else:
-                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' Make it count!'
+                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' try left. Make it count!'
         else:
-            print "You failed too many straight guesses. GAME OVER!"
-            print "" #intentonal blank space
+            print "You failed too many straight guesses. GAME OVER!\n"
             quit()
     print paragraph
     print "You WON YAY!!!"
@@ -71,13 +71,13 @@ def guesses():
         print "Your input does not appear to an integer. Please try again"
         guesses()
     else:
+        max_limit = 100
         if type(tries) is int:
-            if tries > 100:
+            if tries > max_limit:
                 print "Sorry number is not lower than 100. Pick new number"
                 guesses()
             else:
-                print "You will get " + str(tries) + " guesses per problem."
-                print "" #intended blank space
+                print "You will get " + str(tries) + " guesses per problem.\n"
                 return tries
 
 def game_start():
