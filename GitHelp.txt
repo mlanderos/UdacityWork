@@ -18,7 +18,8 @@ Steps to create a new branch and push it to Github
 4. git branch <new Branch name> ##to create a new branch from Master
 5. git checkout <new Branch name>
 6. Push branch to Github: git push origin <new brach name>
-6. Make changes to your branch and then follow steps above to merge those changes to Master
+7. Make changes to your branch and push them to new branch: git push --set-upstream origin <new branch name>
+8.then follow steps above to merge those changes to Master
 
 If working on Master branch and making changes to Master branch
 1. git status (ensure you are on master branch)
