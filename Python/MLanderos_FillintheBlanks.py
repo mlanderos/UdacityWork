@@ -33,6 +33,20 @@ __1__ are the constructs which can manipulate the value of operands. Python lang
 __2__metric __1__, Comparison __1__, __3__ment __1__, Log__4__ __1__, Bitwise __1__, Membership __1__ & Identity __1__."""
     return paragraph
 
+def ask_question(paragraph, question):
+    """Prompts user for answer to question. Returns answer in string type"""
+    print "The current paragraph reads as such:"
+    print paragraph
+    user_answer = raw_input('What is the answer to question ' + str(question) +': ').lower()
+    return user_answer
+
+def islast_chance(min_c, max_c):
+    """Returns different message to user if user is on its last chance to answer question."""
+    if max_c > min_c:
+        print 'That isn''t the correct answer! Lets try again; You have ' + str(max_c) + ' trys left.'
+    else:
+        print 'That isn''t the correct answer! Lets try again; You have ' + str(max_c) + ' try left. Make it count!'
+
 def play_game(game_level, chances):
     """logic for looping through all questions and ending game if max attempts are met. Prints string output for user"""
     paragraph = get_paragraphfor(game_level)
@@ -41,9 +55,7 @@ def play_game(game_level, chances):
     max_tries = chances
     min_tries = 1
     while question < question_overflow:
-        print "The current paragraph reads as such:"
-        print paragraph
-        user_answer = raw_input('What is the answer to question ' + str(question) +': ').lower()
+        user_answer = ask_question(paragraph, question)
         if max_tries > min_tries:
             if verify_answer(game_level, user_answer, question):
                 paragraph = paragraph.replace('__'+ str(question) + '__', user_answer)
@@ -52,10 +64,7 @@ def play_game(game_level, chances):
                 max_tries = chances #resetting retries back to chances variable for next question!
             else:
                 max_tries -= 1
-                if max_tries > min_tries:
-                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' trys left.'
-                else:
-                    print 'That isn''t the correct answer! Lets try again; You have ' + str(max_tries) + ' try left. Make it count!'
+                islast_chance(min_tries, max_tries)
         else:
             print "You failed too many straight guesses. GAME OVER!\n"
             quit()
