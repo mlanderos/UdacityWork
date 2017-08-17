@@ -72,7 +72,7 @@ def guesses():
         guesses()
     else:
         max_limit = 100
-        if type(tries) is int:
+        if isinstance(tries, int):
             if tries > max_limit:
                 print "Sorry number is not lower than 100. Pick new number"
                 guesses()
